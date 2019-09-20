@@ -14,19 +14,19 @@ def welcome():
 def configuration():
     form = RegistrationForm()
     if form.validate_on_submit():
-        value = dict(form.choice.choices).get(form.choice.data)
+        value = form.selectDifficulty.data
         pilotSkill = form.allocatePilot.data
         engineerSkill = form.allocateEngineer.data
         merchantSkill = form.allocateMerchant.data
         fighterSkill = form.allocateFighter.data
-        sum = pilotSkill + engineerSkill + merchantSkill + fighterSkill
-        if value == 'Easy':
+        sum = int(pilotSkill) + int(engineerSkill) + int(merchantSkill) + int(fighterSkill)
+        if value == 'easy':
             if sum <= 16:
                 return redirect(url_for('easy'))
-        if value == 'Medium':
+        if value == 'medium':
             if sum <= 12:
                 return redirect(url_for('medium'))
-        if value == 'Hard':
+        if value == 'hard':
             if sum <= 8:
                 return redirect(url_for('hard'))
     return render_template('configuration.html', form=form)
@@ -48,4 +48,7 @@ def hard():
 
 
 if __name__ == '__main__':
+    app.config['ENV'] = 'development'
+    app.config['DEBUG'] = True
+    app.config['TESTING'] = True
     app.run(debug=True)

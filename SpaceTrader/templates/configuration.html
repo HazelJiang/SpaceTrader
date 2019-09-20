@@ -6,7 +6,7 @@
 {% endblock head %}
 {% block content %}
     <div class = "container">
-        <form method="POST" action = ''>
+        <form method="POST" action="{{ url_for('configuration') }}">
             {{ form.hidden_tag() }}
             <fieldset class = "form-group">
                 <div class="form-group">
@@ -42,10 +42,9 @@
                     {{ form.allocateMerchant() }}
                 </div>
             </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
         </form>
-        <div class="form-group">
-            {{ form.submit.label() }}
-            {{ form.submit() }}
-        </div>
     </div>
 {% endblock content %}
