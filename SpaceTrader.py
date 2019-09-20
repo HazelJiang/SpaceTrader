@@ -29,7 +29,8 @@ def configuration():
         if value == 'hard':
             if sum <= 8:
                 return redirect(url_for('hard'))
-    return render_template('configuration.html', form=form)
+    else:
+        return render_template('configuration.html', form=form)
 
 
 @app.route('/easy')
