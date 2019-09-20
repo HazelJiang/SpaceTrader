@@ -1,15 +1,18 @@
+# import statements
 from flask import Flask, render_template, url_for, redirect
 from forms import RegistrationForm
+
+# Creating Flask object app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'cd291fd59e221b9a3a13c13b3b5dbc9e'
 
-
+# Creating a route (welcome page)
 @app.route('/')
 @app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
 
-
+# Creating a route (configuration screen)
 @app.route('/configuration', methods=['GET', 'POST'])
 def configuration():
     form = RegistrationForm()
@@ -32,22 +35,22 @@ def configuration():
     else:
         return render_template('configuration.html', form=form)
 
-
+# Creating a route (a page for choosing easy)
 @app.route('/easy')
 def easy():
     return render_template('finalEasy.html')
 
-
+# Creating a route (a page for choosing medium)
 @app.route('/medium')
 def medium():
     return render_template('finalMedium.html')
 
-
+# Creating a route (a page for choosing hard)
 @app.route('/hard')
 def hard():
     return render_template('finalHard.html')
 
-
+# Run the environment
 if __name__ == '__main__':
     app.config['ENV'] = 'development'
     app.config['DEBUG'] = True
