@@ -17,6 +17,7 @@ def welcome():
 def configuration():
     form = RegistrationForm()
     if form.validate_on_submit():
+        # Configure attribute for characters
         value = form.selectDifficulty.data
         pilotSkill = form.allocatePilot.data
         engineerSkill = form.allocateEngineer.data
