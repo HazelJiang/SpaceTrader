@@ -35,17 +35,17 @@ def configuration():
     else:
         return render_template('configuration.html', form=form)
 
-# Creating a route (a page for choosing easy)
+# Creating a route (page for choosing easy)
 @app.route('/easy')
 def easy():
     return render_template('finalEasy.html')
 
-# Creating a route (a page for choosing medium)
+# Creating a route (page for choosing medium)
 @app.route('/medium')
 def medium():
     return render_template('finalMedium.html')
 
-# Creating a route (a page for choosing hard)
+# Creating a route (page for choosing hard)
 @app.route('/hard')
 def hard():
     return render_template('finalHard.html')
