@@ -27,12 +27,18 @@ def configuration():
         if value == 'easy':
             if sum <= 16:
                 return redirect(url_for('easy'))
+            else:
+                return redirect(url_for('errormessage'))
         if value == 'medium':
             if sum <= 12:
                 return redirect(url_for('medium'))
+            else:
+                return redirect(url_for('errormessage'))
         if value == 'hard':
             if sum <= 8:
                 return redirect(url_for('hard'))
+            else:
+                return redirect((url_for('errormessage')))
     else:
         return render_template('configuration.html', form=form)
 
@@ -50,6 +56,11 @@ def medium():
 @app.route('/hard')
 def hard():
     return render_template('finalHard.html')
+
+
+@app.route('/errorMessage')
+def errormessage():
+    return render_template('errorMessage.html')
 
 # Run the environment
 if __name__ == '__main__':
